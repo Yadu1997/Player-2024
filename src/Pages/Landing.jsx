@@ -34,7 +34,7 @@ const Landing = () => {
                 </Card.Body>
               </Card>
             </div>
-            <div className="col"></div>
+            <div className="col-lg"></div>
             <div className="col-lg-3 my-3">
             <Card className='p-2' style={{ width: '350px',height:"400px" }}>
                 <Card.Img className='' height={"300px"} variant="top" src={Category} />
@@ -46,7 +46,7 @@ const Landing = () => {
                 </Card.Body>
               </Card>
             </div>
-            <div className="col"></div>
+            <div className="col-lg"></div>
             <div className="col-lg-4 my-3">
             <Card className='p-2' style={{ width: '350px',height:"400px" }}>
                 <Card.Img className='' height={"300px"} variant="top" src={History} />
@@ -67,7 +67,7 @@ const Landing = () => {
           </div>
           <div className="col"></div>
           <div className="col-lg-6">
-          <iframe width="100%" height="420" src="https://www.youtube.com/embed/TGUizrktRQ0" title="Fast &amp; Furious 6: Family reunion HD CLIP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="100%" height="420" src="https://www.youtube.com/embed/TGUizrktRQ0" title="Fast &amp; Furious 6: Family reunion HD CLIP"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           </div>
         </div>
       </div>

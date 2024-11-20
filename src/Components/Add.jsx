@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { Button, FloatingLabel, Form, Modal } from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { addVideoAPI } from '../Services/allAPI';
 
-const Add = () => {
+const Add = ({setAddVideoResponse}) => {
 
   const [videoDetails, SetVideoDetails] = useState({
     caption: "", imgURL: "", youtubeURL: ""
   })
   const [invalidYoutubeLink,setInvalidYoutubeLink] = useState(false)
 
-  console.log(videoDetails);
+  // console.log(videoDetails);
 
   const [show, setShow] = useState(false);
 
@@ -20,7 +21,7 @@ const Add = () => {
   const getEmbedURL = (link) => {
     if (link.includes("v=")) {
       const videoid = link.split("v=")[1].slice(0, 11)
-      console.log(videoid);
+      // console.log(videoid);
       SetVideoDetails({...videoDetails,youtubeURL:`https://www.youtube.com/embed/${videoid}`})
       setInvalidYoutubeLink(false)
     } else {
@@ -29,10 +30,25 @@ const Add = () => {
     }
   }
 
-  const handleUpload = () =>{
+  const handleUpload = async() =>{
     const{caption,imgURL,youtubeURL} = videoDetails
     if (caption && imgURL && youtubeURL) {
       // proccede to api call
+      try {
+        const result = await addVideoAPI(videoDetails)
+        // console.log(result);
+        if (result.status>=200 && result.status<300) {
+          // console.log(result.data);
+          setAddVideoResponse(result.data)
+          handleClose()
+          SetVideoDetails({caption: "", imgURL: "", youtubeURL: ""})
+          // toast.success(`${result?.data.caption} Added`)
+        }else{
+          toast.warning(result?.response.data)
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       toast.warning("please fil the form completely")
     }
@@ -97,7 +113,7 @@ const Add = () => {
           <Button onClick={handleUpload} variant="primary">Upload</Button>
         </Modal.Footer>
       </Modal>
-      <ToastContainer position='top-center' theme='colored' autoClose={3000}/>
+      <ToastContainer position='top-center' theme='colored' autoClose={1500}/>
     </>
 
   )
