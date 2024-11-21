@@ -38,7 +38,7 @@ const VideoCard = ({displayData,setDeleteVideoResponse,insideCategory}) => {
 
   return (
     <>
-      <Card draggable={true} onDragStart={e=>dragStarted(e,displayData?.id)} style={{ width: '18rem' }} className='p-3 shadow'>
+      <Card draggable={true} onDragStart={e=>dragStarted(e,displayData?.id)} style={{ width: '18rem' }} className='p-3 shadow mb-3'>
       <Card.Img onClick={handleShow} height={'150px'} width={''} variant="top" src={displayData?.imgURL} alt='image' />
       <Card.Body>
         <Card.Title>

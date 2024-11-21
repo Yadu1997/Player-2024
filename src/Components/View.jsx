@@ -35,7 +35,7 @@ const View = ({addVideoResponse,removeCategoryVideoResponse,setOnDropViewRespons
       const{categoryName,id} = data
       const categoryResult = await updateCategoryAPI(categoryId,{id,categoryName,allVideos:updatedCategoryVideoList}) 
       const result = await addVideoAPI(videoDetails)
-      setOnDropViewResponse(result.data)
+      setOnDropViewResponse(categoryResult.data)
       getAllVideos()
     } catch (error) {
       console.log(error);
