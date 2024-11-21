@@ -62,7 +62,7 @@ const Category = ({setRemoveCategoryVideoResponse,onDropViewResponse}) => {
       await updateCategoryAPI(catId,selectedCategory)
       getAllCategory()
       const result = removeVideoAPI(videoId)
-      setRemoveCategoryVideoResponse(result)
+      setRemoveCategoryVideoResponse(result.data)
     } catch (error) {
       console.log(error);
     }
